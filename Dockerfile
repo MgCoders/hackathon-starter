@@ -1,13 +1,9 @@
-FROM node:6.6.0
+FROM node:6.1.0
 
-COPY . /starter
-COPY package.json /starter/package.json
-COPY .env.example /starter/.env.example
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-WORKDIR /starter
+COPY . /usr/src/app/
+RUN npm install
 
-RUN npm install 
-
-CMD ["npm","start"]
-
-EXPOSE 8888
+CMD [ "node", "app.js" ]

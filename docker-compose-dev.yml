@@ -2,7 +2,11 @@ version: '2'
 services:
 
   web:
-    image: mgcoders/prueba_mean_skeleton
+    image: node:6.1
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c 'npm install; npm install -g nodemon ; nodemon -e js,jade app.js'
     ports:
       - "80:3000"
     depends_on:
@@ -20,4 +24,3 @@ services:
 
 networks:
   all:
-     
